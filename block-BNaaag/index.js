@@ -1,12 +1,14 @@
 var fs = require("fs");
 
-fs.readFile("./content.md", (err, file) => {
-  console.log(err, file.toString());
+fs.readFile("./content.md", "utf8", (err, content) => {
+  console.log(content);
 });
 
-var buff1 = Buffer.alloc(10);
-console.log(buff1);
+var result = fs.readFileSync("./content.md", "utf8");
+console.log(result);
 
-buff1.write("Welcome to Buffer").toString();
+var buff1 = Buffer.alloc(10);
+
+buff1.write("Welcome to Buffer");
 
 console.log(buff1);
