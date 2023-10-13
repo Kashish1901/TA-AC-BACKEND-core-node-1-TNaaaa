@@ -17,9 +17,10 @@ var uptime = os.uptime();
 console.log(cpus, freeM, version, uptime);
 
 var buff1 = Buffer.alloc(12);
-buff1.toString();
-var buff2 = Buffer.allocUnsafe(12);
 
-console.log(buff1, buff2);
+var buff2 = Buffer.allocUnsafe(12);
+buff1.write("Hello World!");
+console.log(buff1.toString());
+console.log(buff2);
 
 console.log(parsedUrl.query, parsedUrl.pathname, parsedUrl.protocol);
