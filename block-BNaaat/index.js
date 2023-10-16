@@ -5,11 +5,16 @@ var server = http.createServer(hanldeRequest);
 
 function hanldeRequest(req, res) {
   if (req.method === "GET" && req.url === "/file") {
-    res.setHeader("content-type", "text/html");
     fs.readFile("./node.html", (err, content) => {
       if (err) console.log(err);
+      res.setHeader("content-type", "text/html");
       res.end(content);
     });
+  }
+
+  if (req.method === "GET" && req.url === "/stream") {
+    res.setHeader("content-type", "text/html");
+    fs.createReadStream("./node.html").pipe(res);
   }
 }
 
